@@ -1,0 +1,15 @@
+- @page_title = "UserAuth | Signup"
+%div.Sign_Form.text-center
+  %h1 Sign Up
+  = semantic_form_for @user do |f|
+    = f.inputs do
+      = f.input :username
+      = f.input :email
+      = f.input :password
+    = f.actions do
+      = f.action :submit, label: "Submit"
+  - if @user.errors.any?
+    %ul.Signup_Errors
+    - for message_error in @user.errors.full_messages
+      %li 
+        = message_error
