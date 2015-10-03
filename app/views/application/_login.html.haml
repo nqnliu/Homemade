@@ -1,23 +1,25 @@
 - @page_title = "UserAuth | Signup"
-%div.Sign_Form
-  %h1 Sign Up
-  = form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f|
-    %p 
-      Username: 
-      = f.text_field :username
-    %p 
-      Email: 
-      = f.text_field :email
-    %p 
-      Password: 
-      = f.password_field :password
-    %p 
-      Password Confirmation: 
-      = f.password_field :password_confirmation
-    = f.submit :Signup
-  - if @user and @user.errors.any?
-    %ul.Signup_Errors
-    - for message_error in @user.errors.full_messages
-      %li 
-        * 
-        = message_error
+%div.wrapper
+  %div.Sign_Form
+    %div.Form_Container
+      %h1.form_header SIGN UP
+      = form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f|
+        %p.form_label 
+          USERNAME
+          = f.text_field :username, :class => 'form-control'
+        %p.form_label
+          EMAIL
+          = f.text_field :email, :class => 'form-control'
+        %p.form_label
+          PASSWORD 
+          = f.password_field :password, :class => 'form-control'
+        %p.form_label
+          PASSWORD CONFIRMATION
+          = f.password_field :password_confirmation, :class => 'form-control'
+        = f.submit :Signup, :class => 'btn btn-default'
+      - if @user and @user.errors.any?
+        %ul.Signup_Errors
+        - for message_error in @user.errors.full_messages
+          %li 
+            * 
+            = message_error
